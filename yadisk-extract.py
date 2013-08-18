@@ -7,11 +7,10 @@ import random
 import requests
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument("url", nargs="+", help="Yandex.Disk public url")
 
 class YandexDiskException(Exception):
     pass
+
 
 def get_direct_url(url):
     pass_request = requests.get("https://pass.yandex.ru/", params={
@@ -68,7 +67,10 @@ def get_direct_url(url):
 
     return json_answer["data"]["url"]
 
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("url", nargs="+", help="Yandex.Disk public url")
     args = parser.parse_args()
 
     for url in set(args.url): 
